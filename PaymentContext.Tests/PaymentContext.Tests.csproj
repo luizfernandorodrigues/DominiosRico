@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <AssemblyVersion>1.2020.4.18</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
