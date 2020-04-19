@@ -1,8 +1,7 @@
-﻿using PaymentContext.Domain.Entities;
-using PaymentContext.Domain.ValueObjects;
+﻿using PaymentContext.Domain.ValueObjects;
 using System;
 
-namespace PaymentContext.Tests.Entities
+namespace PaymentContext.Domain.Entities
 {
     public class BoletoPayment : Payment
     {

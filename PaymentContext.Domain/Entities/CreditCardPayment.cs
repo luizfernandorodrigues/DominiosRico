@@ -1,10 +1,7 @@
-﻿using PaymentContext.Domain.Entities;
-using PaymentContext.Domain.ValueObjects;
+﻿using PaymentContext.Domain.ValueObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace PaymentContext.Tests.Entities
+namespace PaymentContext.Domain.Entities
 {
     public class CreditCardPayment : Payment
     {

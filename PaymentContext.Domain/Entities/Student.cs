@@ -42,7 +42,7 @@ namespace PaymentContext.Domain.Entities
             AddNotifications(new Contract()
                 .Requires()
                 .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Você já possui uma assinatura ativa")
-                )
+                );
         }
         #endregion Métodos Publicos
     }
