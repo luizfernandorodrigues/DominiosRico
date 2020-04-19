@@ -1,3 +1,4 @@
+using Flunt.Validations;
 using PaymentContext.Domain.ValueObjects;
 using PaymentContext.Shared.Entities;
 using System.Collections.Generic;
@@ -15,12 +16,14 @@ namespace PaymentContext.Domain.Entities
             Email = email;
 
             _subscriptions = new List<Subscription>();
+
+            AddNotifications(name, document, email);
         }
 
         #region Propriedades
         public Name Name { get; private set; }
         public Document Document { get; private set; }
-        public Email Email { get; private  set; }
+        public Email Email { get; private set; }
         public Addres Address { get; private set; }
         public IReadOnlyCollection<Subscription> Subscriptions { get { return _subscriptions.ToArray(); } }
         #endregion Propriedades
@@ -28,11 +31,18 @@ namespace PaymentContext.Domain.Entities
         #region Métodos Publicos
         public void AddSubscription(Subscription subscription)
         {
-            foreach (var sub in Subscriptions)
-                sub.Inactivate();
+            var hasSubscriptionActive = false;
 
-            _subscriptions.Add(subscription);
+            foreach (var item in _subscriptions)
+            {
+                if (item.Active)
+                    hasSubscriptionActive = true;
+            }
 
+            AddNotifications(new Contract()
+                .Requires()
+                .IsFalse(hasSubscriptionActive, "Student.Subscriptions", "Você já possui uma assinatura ativa")
+                )
         }
         #endregion Métodos Publicos
     }
