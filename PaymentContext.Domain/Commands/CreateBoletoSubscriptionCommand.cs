@@ -1,17 +1,19 @@
 ﻿using Flunt.Notifications;
+using Flunt.Validations;
 using PaymentContext.Domain.Enuns;
 using PaymentContext.Shared.Commands;
 using System;
 
 namespace PaymentContext.Domain.Commands
 {
-    public class CreatePayPalSubscriptionCommand: Notifiable, ICommand
+    public class CreateBoletoSubscriptionCommand : Notifiable, ICommand
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Document { get; set; }
         public string Email { get; set; }
-        public string TransactionCode { get; set; }
+        public string BarCode { get; set; }
+        public string boletoNumber { get; set; }
         public string PayerNumber { get; set; }
         public DateTime PaidDate { get; set; }
         public DateTime ExpireDate { get; set; }
@@ -31,7 +33,11 @@ namespace PaymentContext.Domain.Commands
 
         public void Validate()
         {
-            throw new NotImplementedException();
+            AddNotifications(new Contract()
+                .Requires()
+                .HasMinLen(FirstName, 3, "Name.FirstName", "Nome deve conter pelo menos 3 caracteres")
+                .HasMinLen(LastName, 3, "Name.LastName", "Sobrenome deve conter pelo menos 3 caracteres")
+                );
         }
     }
 }

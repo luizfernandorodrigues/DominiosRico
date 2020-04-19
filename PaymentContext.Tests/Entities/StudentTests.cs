@@ -19,9 +19,9 @@ namespace PaymentContext.Tests.Entities
         public StudentTests()
         {
             name = new Name("Luiz", "Fernando");
-            document = new Document("08607576925", EDocumentType.CPF);
+            document = new Document("12345678921", EDocumentType.CPF);
             email = new Email("luiz@gmail.com");
-            address = new Addres("Rua Antonio Barreto", "61", "86170000", "Sertanopolis", "PR", "Brasil", "1340000");
+            address = new Addres("Rua Teste", "61", "86170000", "Sertanopolis", "PR", "Brasil", "1340000");
             student = new Student(name, document, email);
             subscription = new Subscription(null);
 
